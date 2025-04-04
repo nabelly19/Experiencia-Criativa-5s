@@ -1,2 +1,2 @@
 # Experiencia-Criativa-5s
-This repository is a place to include a college semestral work
+This repository is a place to include some college's activities
