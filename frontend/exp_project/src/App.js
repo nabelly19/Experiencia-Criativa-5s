@@ -3,15 +3,16 @@ import React, { Component } from 'react';
 import { Route, Routes } from "react-router-dom";
 
 // Pages
+import HomePage from './pages/HomePage';
 // Components
 import Header from './components/NavbarComponent';
 
 function App() {
   return (
     <>
-      <Header />
+      <Header/>
       <Routes>
-        {/* <Route path="/" element={<ListPage />} /> */}
+        <Route path="/" element={<HomePage/>} />
       </Routes>
     </>
     // </ErrorBoundary>

@@ -1,21 +1,23 @@
-import { Card, CardContent, Text } from '@/components/ui/card'
+import React from 'react';
+import styles from './styles.module.css';
+import logo from '../../assets/logo_SOPRO.svg'
 
 export default function IntroCard() {
   return (
-    <Card className="bg-blue-900 text-white">
-      <CardContent>
-        <div className="flex items-center mb-4">
-          {/* Icon placeholder */}
-          <Text variant="h4" className="ml-2 uppercase font-bold">SOPRO</Text>
-        </div>
-        <Text className="mb-2 font-semibold">Um novo ar para a sua rotina</Text>
-        <Text>
-          Sua nova rotina começa aqui. Defina metas, crie hábitos saudáveis e acompanhe sua evolução.
-        </Text>
-        <Text>
-          Aproveite todas as ferramentas que este Sistema de Organização e Planejamento para Redesenhar Objetivos.
-        </Text>
-      </CardContent>
-    </Card>
-  )
+    <div className={styles.card}>
+      <div className={styles.titleContainer}>
+      <span><img src={logo} className={styles.logo} /></span> 
+      <h1 className={styles.title}>
+          <span className={styles.subtitle}>- Um novo ar para a sua rotina</span>
+      </h1>
+      </div>
+      <p className={styles.text}>
+        Sua nova rotina começa aqui. Defina metas, crie hábitos saudáveis e acompanhe sua evolução. <br/>
+        . <br/>
+        Aproveite todas as ferramentas que deste Sistema de Organização e Planejamento para Redesenhar Objetivos. <br/>
+        .<br/>
+        .<br/>
+      </p>
+    </div>
+  );
 }

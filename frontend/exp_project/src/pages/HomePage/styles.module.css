@@ -1,0 +1,65 @@
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: auto;
+    min-height: 100vh;
+}
+
+.section1 {
+    width: 100%;
+    min-height: 30vh;
+    height: auto;
+    background-color: #000B1B;
+}
+
+.cardContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.waveContainer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    /* ou o valor que desejar */
+    transform: rotate(180deg);
+    /* Inverte verticalmente */
+}
+
+.section2 {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #073673;
+    height: auto;
+    z-index: 1;
+}
+
+@media (width > 1024px) {
+
+    body,
+    html {
+        margin: 0;
+        padding: 0; 
+        background: #34343F;
+    }
+
+    main {
+        flex-direction: row;
+        width: 100%;
+        min-height: 100vh;
+        height: auto;
+    }
+
+    .section1 {
+        width: 60%;
+    }
+
+    .section2 {
+        width: 40%;
+    }
+}
