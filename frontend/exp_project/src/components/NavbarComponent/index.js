@@ -1,17 +1,24 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+
+// styles
+import styles from "./styles.module.css"
 
 export default function Header() {
   return (
-    <Navbar bg="dark" data-bs-theme="dark">
+    <Navbar  expand="lg" className={styles.custom_navbar}>
         <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-          </Nav>
+          <Navbar.Brand className={styles.navbar_brand} href="#home">SOPRO</Navbar.Brand>
+          <Navbar.Toggle className={styles.nav_toggle} aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse className={styles.nav_collapse} id="basic-navbar-nav">
+                        <Nav className="me-auto">
+                            <Nav.Link className={styles.nav_link} href="/">Home</Nav.Link>
+                            <Nav.Link className={styles.nav_link} href="/criar">Sobre</Nav.Link>
+                            <Nav.Link className={styles.nav_link} href="/">Planos</Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
         </Container>
       </Navbar>
   )
