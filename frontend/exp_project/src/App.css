@@ -3,3 +3,29 @@
 body {
   font-family: 'Lato', sans-serif;
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0e3b78; 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4aa3ff; 
+  border-radius: 10px;
+  border: 2px solid #0e3b78; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #71c1ff; 
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #4aa3ff #0e3b78;
+}
+

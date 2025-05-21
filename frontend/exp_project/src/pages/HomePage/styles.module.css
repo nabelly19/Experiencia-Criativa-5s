@@ -6,6 +6,11 @@ main {
     min-height: 100vh;
 }
 
+.mainWrapper {
+    display: flex;
+    min-height: calc(100vh - 120px); /* ajuste conforme footer */
+  }
+
 .section1 {
     width: 100%;
     min-height: 30vh;
@@ -18,14 +23,17 @@ main {
     justify-content: center;
     align-items: center;
     height: 100%;
+    padding: 10% 0 20% 0;
 }
 
 .waveContainer {
     position: absolute;
+    flex-shrink: 0;
+    align-items: flex-end;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 150px;
+    height: 100px;
     /* ou o valor que desejar */
     transform: rotate(180deg);
     /* Inverte verticalmente */
@@ -37,6 +45,11 @@ main {
     background-color: #073673;
     height: auto;
     z-index: 1;
+}
+
+.secondArea{
+    background-color: #000B1B;
+    height: 100vh;
 }
 
 @media (width > 1024px) {
@@ -62,4 +75,5 @@ main {
     .section2 {
         width: 40%;
     }
+
 }
