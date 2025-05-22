@@ -10,7 +10,7 @@ export default function Footer() {
                     <Col sm={12} md={6}>
                         <h6>Sobre</h6>
                         <p className="text-justify">
-                            <strong>a</strong> <i>a</i> aa.
+                            <strong>SOPRO</strong> <i>Sistema de Organização e Planejamento para Redesenhar Objetivos.</i> Seu assistente virtual sempre disponível para apoiar você na construção e manutenção de hábitos saudáveis..
                         </p>
                     </Col>
 

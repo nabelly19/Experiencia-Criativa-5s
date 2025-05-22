@@ -28,6 +28,7 @@
 .sitefooter a
 {
   color:#000B1B;
+  text-decoration: none;
 }
 .sitefooter a:hover
 {

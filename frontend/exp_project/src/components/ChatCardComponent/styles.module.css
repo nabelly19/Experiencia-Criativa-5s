@@ -31,6 +31,11 @@
 
   .svg1 {
     margin-top: 50px;
+    width: 375px !important
+  }
+
+  .svg {
+    width: 375px !important;
   }
   
   @media (max-width: 576px) {
@@ -45,11 +50,11 @@
     }
 
     .svg {
-      width: 350px !important;
+      width: 250px !important;
     }
 
     .svg1 {
-      width: 350px !important;
+      width: 250px !important;
     }
   }
   

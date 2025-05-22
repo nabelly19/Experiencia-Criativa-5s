@@ -4,6 +4,7 @@ main {
     width: 100vw;
     height: auto;
     min-height: 100vh;
+    overflow: hidden;
 }
 
 .section1 {
@@ -39,12 +40,49 @@ main {
     background-color: #073673;
     height: auto;
     z-index: 1;
-    padding: 130px 10px 0 10px;
+    padding: 50px 10px 0 10px;
 }
 
-.secondArea{
+.HeadIconContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chatCardWithIcon {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .chatIcon {
+    width: 120px;
+    margin-bottom: 50px;
+  }  
+
+.secondArea {
     background-color: #000B1B;
-    height: 100vh;
+    height: 80vh;
+}
+
+.buttonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.pageTitle {
+    color: azure;
+    font-weight:900;
+    font-family: 'Lato', sans-serif;
+    margin-bottom: 80px;
+}
+
+.wppBtn {
+    margin-top: 50px;
 }
 
 @media (width > 1024px) {
