@@ -39,7 +39,7 @@ export default function HomePage() {
         </div> */}
       </main>
       <div className={styles.secondArea}>
-        <WaveBackground />
+        <WaveBackground/>
         <div className={styles.buttonContainer}>
           <h3 className={styles.pageTitle}>Seu novo assistente pessoal de IA</h3>
           <ButtonWppComponent/>

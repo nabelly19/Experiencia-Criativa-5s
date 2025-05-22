@@ -65,6 +65,7 @@ main {
 .secondArea {
     background-color: #000B1B;
     height: 80vh;
+    overflow: hidden;
 }
 
 .buttonContainer {
@@ -72,6 +73,9 @@ main {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    flex-wrap: wrap;
+    padding: 1rem;
+    box-sizing: border-box;
 }
 
 .pageTitle {
@@ -110,3 +114,22 @@ main {
     }
 
 }
+
+@media (max-width : 600px) {
+    .buttonContainer {
+      padding: 0.5rem;
+    }
+  
+    .buttonContainer h3 {
+      font-size: 1.2rem;
+      text-align: center;
+    }
+  
+    .buttonContainer button {
+      width: 100%;
+    }
+
+    .section1 {
+       padding: 60px
+    }
+  }
