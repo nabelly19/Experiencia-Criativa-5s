@@ -7,11 +7,12 @@ import IntroCard from "../../components/IntroCardComponent";
 import Footer from "../../components/FooterComponent";
 import ChatCard from "../../components/ChatCardComponent";
 
+import brainIcon from "../../assets/HeadIcon.svg"
+
 export default function HomePage() {
   return (
     <>
-      <main className={styles.mainWrapper}>
-
+      <main>
         <section className={styles.section1}>
           <div className={styles.cardContainer}>
             <IntroCard />

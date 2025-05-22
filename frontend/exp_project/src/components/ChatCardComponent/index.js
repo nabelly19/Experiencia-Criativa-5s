@@ -9,10 +9,11 @@ import leftbubble2 from "../../assets/WhatsappMessage3.svg"
 
 export default function ChatCard() {
     return (
+      <>
       <div className={styles.chatWrapper}>
         <div className={styles.chatCard}>
               <div className={`${styles.bubble} ${styles.left}`}>
-                <img src={leftbubble} className={styles.svg} alt="Bubble" />
+                <img src={leftbubble} className={styles.svg1} alt="Bubble" />
               </div>
   
               <div className={`${styles.bubble} ${styles.right}`}>
@@ -25,5 +26,6 @@ export default function ChatCard() {
   
             </div>
           </div>
+      </>
     );
   }

@@ -6,11 +6,6 @@ main {
     min-height: 100vh;
 }
 
-.mainWrapper {
-    display: flex;
-    min-height: calc(100vh - 120px); /* ajuste conforme footer */
-  }
-
 .section1 {
     width: 100%;
     min-height: 30vh;
@@ -22,8 +17,8 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    padding: 10% 0 20% 0;
+    height: 90%;
+
 }
 
 .waveContainer {
@@ -41,10 +36,10 @@ main {
 
 .section2 {
     width: 100%;
-    min-height: 100vh;
     background-color: #073673;
     height: auto;
     z-index: 1;
+    padding: 130px 10px 0 10px;
 }
 
 .secondArea{
@@ -64,7 +59,7 @@ main {
     main {
         flex-direction: row;
         width: 100%;
-        min-height: 100vh;
+        max-height: 100vh;
         height: auto;
     }
 

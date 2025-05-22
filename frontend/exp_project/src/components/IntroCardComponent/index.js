@@ -13,10 +13,8 @@ export default function IntroCard() {
       </div>
       <p className={styles.text}>
         Sua nova rotina começa aqui. Defina metas, crie hábitos saudáveis e acompanhe sua evolução. <br/>
-        . <br/>
+          <br/>
         Aproveite todas as ferramentas que deste Sistema de Organização e Planejamento para Redesenhar Objetivos. <br/>
-        .<br/>
-        .<br/>
       </p>
     </div>
   );
