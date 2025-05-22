@@ -6,6 +6,7 @@ import wppIcon from "../../assets/whatsapp.svg";
 
 //components
 import CustomModal from "../ModalComponent";
+import CustomInputComponent from "../CustomInputComponent";
 import { Form } from "react-bootstrap";
 
 export default function ButtonWppComponent() {
@@ -37,15 +38,33 @@ export default function ButtonWppComponent() {
         onConfirm={handleConfirm}
       >
         <Form>
-          <Form.Group className="mb-3" controlId="formNome">
-            <Form.Label>Nome</Form.Label>
-            <Form.Control type="text" placeholder="Digite seu nome" />
-          </Form.Group>
+          <CustomInputComponent
+            label="Nome"
+            type="text"
+            placeholder="Digite seu nome..."
+            name="nome"
+          />
 
-          <Form.Group className="mb-3" controlId="formEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control type="email" placeholder="Digite seu email" />
-          </Form.Group>
+          <CustomInputComponent
+            label="CPF"
+            type="text"
+            placeholder="Digite seu CPF..."
+            name="cpf"
+          />
+
+          <CustomInputComponent
+            label="Telefone"
+            type="tel"
+            placeholder="Digite seu telefone..."
+            name="telefone"
+          />
+
+          <CustomInputComponent
+            label="Email"
+            type="email"
+            placeholder="Digite seu email..."
+            name="email"
+          />
         </Form>
       </CustomModal>
     </>
