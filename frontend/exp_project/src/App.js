@@ -1,18 +1,27 @@
-import './App.css';
-import React, { Component } from 'react';
-import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import React, { Component } from "react";
+import { Route, Router, Routes } from "react-router-dom";
 
 // Pages
-import HomePage from './pages/HomePage';
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
 // Components
-import Header from './components/NavbarComponent';
+
+// Layouts
+import AuthLayout from "./layouts/AuthLayout";
+import MainLayout from "./layouts/MainLayout";
 
 function App() {
   return (
     <>
-      <Header/>
       <Routes>
-        <Route path="/" element={<HomePage/>} />
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<HomePage />} />
+        </Route>
+
+        <Route element={<AuthLayout />}>
+          <Route path="/login" element={<LoginPage />} />
+        </Route>
       </Routes>
     </>
     // </ErrorBoundary>
