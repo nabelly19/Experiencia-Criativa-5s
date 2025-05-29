@@ -13,7 +13,7 @@ export default function Header() {
           <Navbar.Toggle className={styles.nav_toggle} aria-controls="basic-navbar-nav" />
           <Navbar.Collapse className={styles.nav_collapse} id="basic-navbar-nav">
                         <Nav className="mx-auto">
-                            <Nav.Link className={styles.nav_link} href="/">Home</Nav.Link>
+                            <Nav.Link className={styles.nav_link} href="/login">Login</Nav.Link>
                             <Nav.Link className={styles.nav_link} href="/criar">Sobre</Nav.Link>
                             <Nav.Link className={styles.nav_link} href="/">Planos</Nav.Link>
                         </Nav>
