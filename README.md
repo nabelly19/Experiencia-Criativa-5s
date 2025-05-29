@@ -1,28 +1,29 @@
 # Experiencia-Criativa-5s
 This repository is a place to include a college semestral work
 
-# 🌬️ SOPRO – Seu Assistente Pessoal de IA para Hábitos Saudáveis
+# 🌬️ SOPRO – Your AI-Powered Personal Assistant for Healthy Habits
 
-> O que é isso?
+> What is this?
 
-SOPRO (Sistema de Organização e Planejamento para Redesenhar Objetivos) é um assistente pessoal alimentado por IA generativa, disponível 24 horas por dia, projetado para auxiliar usuários na criação e manutenção de hábitos saudáveis. Com uma interface intuitiva e suporte contínuo, o SOPRO oferece acompanhamento personalizado, metas diárias e insights inteligentes para promover o bem-estar dos usuários.
+SOPRO (Organization and Planning System to Redesign Goals) is a personal assistant powered by generative AI, available 24/7, designed to help users create and maintain healthy habits. With an intuitive interface and continuous support, SOPRO offers personalized tracking, daily goals, and intelligent insights to promote users' well-being.
 
-# 🚀 Demonstração
+# 🚀 Demo
 
-# 💡 Tecnologias Utilizadas
-React – Biblioteca JavaScript para construção de interfaces de usuário.
+# 💡 Technologies Used
+React – JavaScript library for building user interfaces.
 
-Bootstrap – Framework CSS para design responsivo.
+Bootstrap – CSS framework for responsive design.
 
-Node.js – Ambiente de execução JavaScript no servidor.
+Node.js – JavaScript runtime environment on the server.
 
-Express – Framework web para Node.js.
+Express – Web framework for Node.js.
 
-MySQL – Banco de dados SQL para armazenamento de dados.
+MySQL – SQL database for data storage.
 
-IA Generativa – Implementação de modelos de linguagem para interações personalizadas.
+Generative AI – Implementation of language models for personalized interactions.
 
-Whatsapp - Mensageiro no qual o usuário realiza a comunicação
+WhatsApp – Messaging platform used for user communication.
 
-# 📄 Licença
-Este projeto está licenciado sob a Licença MIT. Consulte o arquivo LICENSE para mais detalhes.
+# 📄 License
+This project is licensed under the MIT License. See the LICENSE file for more details.
+
