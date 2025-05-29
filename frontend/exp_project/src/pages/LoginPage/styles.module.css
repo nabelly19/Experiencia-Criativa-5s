@@ -10,7 +10,7 @@
   }
   
   .loginContainer {
-    padding: 2rem;
+    padding: 0.5rem;
   }
   
   .loginTitle {
@@ -31,4 +31,30 @@
 
   .loginBtn:hover {
     background-color: #247ee6 !important;
+  }
+
+  .registerArea {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .registerArea p {
+    color: azure;
+    margin-top: 20px;
+  }
+
+  .registerArea a {
+    color:#89C0F0;
+  }
+
+  .registerArea a:hover {
+    color:#5e91bd;
+  }
+
+  .waveContainer {
+    position: relative;
+    height: 100%;
   }

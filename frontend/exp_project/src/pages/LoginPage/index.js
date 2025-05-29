@@ -44,7 +44,7 @@ export default function LoginPage() {
 
   return (
     <div className={styles.loginWrapper}>
-      <WaveBackground />
+        <WaveBackground />
       <Container className={styles.loginContainer}>
         <Row className="justify-content-center">
           <Col xs={12} md={6} lg={4}>
@@ -66,10 +66,18 @@ export default function LoginPage() {
                 value={formData.senha}
                 onChange={handleChange}
               />
-              <Button variant="primary" type="submit" className={styles.loginBtn}>
+              <Button
+                variant="primary"
+                type="submit"
+                className={styles.loginBtn}
+              >
                 ENTRAR
               </Button>
             </Form>
+            <div className={styles.registerArea}>
+              <p>Não possui uma conta?</p>
+              <a href="/">Registre-se Agora</a>
+            </div>
           </Col>
         </Row>
       </Container>
