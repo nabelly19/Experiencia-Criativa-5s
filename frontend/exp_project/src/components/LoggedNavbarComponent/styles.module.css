@@ -1,0 +1,29 @@
+* {
+    padding: 0;
+    margin: 0
+}
+
+.custom_navbar {
+    background: #08428C;
+    background: linear-gradient(90deg, rgba(8, 66, 140, 1) 50%, rgba(2, 18, 38, 1) 100%);
+}
+
+.custom_navbar .navbar_brand,
+.custom_navbar .nav_link,
+.custom_navbar .dropdown_item,
+.custom_collapse,
+.nav_toggle,
+.nav_collapse {
+    color: #ffffff !important;
+}
+
+.navbar_brand {
+    font-weight: 500;
+}
+
+.profileIcon {
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}

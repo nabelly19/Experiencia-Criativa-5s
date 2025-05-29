@@ -1,0 +1,26 @@
+.managementContainer {
+    padding: 2rem;
+    background-color: #000B1B;
+    min-height: 100vh;
+    color: #ffffff;
+  }
+  
+  .pageTitle {
+    display: flex;
+    justify-content: center;
+    padding: 2% 0 2% 0;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    font-family: 'Lato', sans-serif;
+  }
+
+  .waveContainer {
+    display: flex;
+    background-color: #000B1B;
+    bottom: 0;
+    width: 100%;
+    /* ou o valor que desejar */
+    transform: rotate(180deg);
+    /* Inverte verticalmente */
+  }
+  

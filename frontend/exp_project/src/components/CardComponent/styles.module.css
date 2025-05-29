@@ -1,7 +1,7 @@
 .card {
   background-color: #000b1b;
-  border: 1px solid #1e5f99;
-  border-radius: 8px;
+  border: 3px solid #89C0F0;
+  border-radius: 20px;
   padding: 1rem;
   color: #ffffff;
   max-width: 300px;
@@ -10,10 +10,11 @@
   flex-direction: column;
   justify-content: space-between;
   box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  font-family: 'Lato', sans-serif;
 }
 
 .title {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin-bottom: 0.5rem;
 }
 
@@ -21,17 +22,21 @@
   flex: 1;
   font-size: 0.9rem;
   margin-bottom: 1rem;
+  font-weight: lighter;
 }
 
 .button {
   align-self: flex-start;
-  background-color: #005bb5;
-  border: none;
+  background-color: #005bb5 !important;
+  width: 100%;
+  border: none !important;
   padding: 0.4rem 1rem;
+  margin-top: 10PX;
+  border-radius: 20px !important;
 }
 
 .button:hover {
-  background-color: #004494;
+  background-color: #247ee6 !important;
 }
 
 /* Responsividade */
