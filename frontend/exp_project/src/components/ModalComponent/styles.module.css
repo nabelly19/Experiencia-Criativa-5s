@@ -30,4 +30,11 @@
 
 .btn {
   border-radius: 20px !important;
+  width: 100%;
+  background-color: #005bb5 !important;
+  border: none !important;
+}
+
+.btn:hover {
+  background-color: #247ee6 !important;
 }

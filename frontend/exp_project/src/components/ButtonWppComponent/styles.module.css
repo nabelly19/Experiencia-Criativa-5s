@@ -44,6 +44,17 @@
     font-size: 18px;
     color: #ffffff;
   }
+
+  .btn {
+    border-radius: 20px !important;
+    width: 100%;
+    margin: 20px 0 0px 0;
+    border: none !important;
+  }
+
+  .btn:hover {
+    background-color: #189b4c !important;
+  }
   
   @media (max-width: 768px) {
     .buttonWpp {

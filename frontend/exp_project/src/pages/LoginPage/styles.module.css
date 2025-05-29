@@ -6,6 +6,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    font-family: 'Lato', sans-serif;
   }
   
   .loginContainer {
@@ -16,6 +17,7 @@
     text-align: center;
     margin-bottom: 1.5rem;
     color: white;
+    font-weight: bold;
   }
   
   .loginBtn {
@@ -24,4 +26,9 @@
     border-radius: 50px !important;
     font-weight: 500 !important;
     font-size: larger !important;
+    background-color: #005bb5 !important;
+  }
+
+  .loginBtn:hover {
+    background-color: #247ee6 !important;
   }
