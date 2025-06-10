@@ -28,6 +28,13 @@ export default function CustomModal({
         <Button className={styles.btn} variant="primary" onClick={handleClose}>
           Voltar
         </Button>
+
+        {onConfirm && (
+          <Button className={styles.btn} variant="primary" onClick={onConfirm}>
+            Salvar
+          </Button>
+        )}
+
       </Modal.Footer>
     </Modal>
   );

@@ -14,7 +14,6 @@ export default function ButtonWppComponent() {
 
   const [formData, setFormData] = useState({
     name: '',
-    cpf: '',
     phone: '',
     email: '',
     password: '',
@@ -39,7 +38,7 @@ export default function ButtonWppComponent() {
     }
   
     try {
-      const response = await fetch('/api/register', {
+      const response = await fetch('https://1b89-200-192-114-19.ngrok-free.app/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -56,7 +55,6 @@ export default function ButtonWppComponent() {
       setShowModal(false);
       setFormData({
         nome: '',
-        cpf: '',
         telefone: '',
         email: '',
         password: '',
@@ -94,17 +92,8 @@ export default function ButtonWppComponent() {
             label="Nome"
             type="text"
             placeholder="Digite seu nome..."
-            name="nome"
+            name="name"
             value={formData.name}
-            onChange={handleChange}
-          />
-
-          <CustomInputComponent
-            label="CPF"
-            type="text"
-            placeholder="Digite seu CPF..."
-            name="cpf"
-            value={formData.cpf}
             onChange={handleChange}
           />
 
@@ -112,7 +101,7 @@ export default function ButtonWppComponent() {
             label="Telefone"
             type="tel"
             placeholder="Digite seu telefone..."
-            name="telefone"
+            name="phone"
             value={formData.phone}
             onChange={handleChange}
           />

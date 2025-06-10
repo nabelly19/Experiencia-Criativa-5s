@@ -7,7 +7,7 @@ import WaveBackground from "../../components/WaveComponent";
 export default function LoginPage() {
   const [formData, setFormData] = useState({
     email: "",
-    senha: "",
+    password: "",
   });
 
   const handleChange = (e) => {
@@ -21,7 +21,7 @@ export default function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://sua-api.com/login", {
+      const response = await fetch("https://1b89-200-192-114-19.ngrok-free.app/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -62,8 +62,8 @@ export default function LoginPage() {
                 label="Senha"
                 type="password"
                 placeholder="Digite sua senha..."
-                name="senha"
-                value={formData.senha}
+                name="password"
+                value={formData.password}
                 onChange={handleChange}
               />
               <Button

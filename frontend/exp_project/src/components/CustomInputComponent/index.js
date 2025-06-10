@@ -22,7 +22,6 @@ export default function CustomInputComponent({
         value={value}
         onChange={onChange}
         name={name}
-        required
       />
     </Form.Group>
   );
