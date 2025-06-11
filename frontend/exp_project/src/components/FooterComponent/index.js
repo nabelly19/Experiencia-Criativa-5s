@@ -10,7 +10,7 @@ export default function Footer() {
                     <Col sm={12} md={6}>
                         <h6>Sobre</h6>
                         <p className="text-justify">
-                            <strong>SOPRO</strong> <i>Sistema de Organização e Planejamento para Redesenhar Objetivos.</i> Seu assistente virtual sempre disponível para apoiar você na construção e manutenção de hábitos saudáveis.
+                            <strong>SOPRO</strong> <i>Sistema de Organização e Planejamento para Redesenhar Objetivos.</i> Seu assistente virtual sempre disponível para apoiar você na construção e manutenção de metas e hábitos saudáveis.
                         </p>
                     </Col>
 
@@ -29,7 +29,7 @@ export default function Footer() {
                 <Row className="mt-3">
                     <Col md={8} sm={6} xs={12}>
                         <p className={styles.copyrightText}>
-                            Copyright &copy; 2025 Todos os direitos reservados por <a href="#">Montibeller</a>.
+                            Copyright &copy; 2025 Todos os direitos reservados por <a href="#">SOPRO</a>.
                         </p>
                     </Col>
 

@@ -42,6 +42,12 @@ export default function HomePage() {
         <WaveBackground/>
         <div className={styles.buttonContainer}>
           <h3 className={styles.pageTitle}>Seu novo assistente pessoal de IA</h3>
+          <p className="text-center text-white">
+            Comece a sua jornada para uma vida mais organizada e produtiva.
+          </p>
+          <p className="text-center text-white">
+            Faça seu cadastro clicando no botão abaixo.
+          </p>
           <ButtonWppComponent/>
         </div>
       </div>

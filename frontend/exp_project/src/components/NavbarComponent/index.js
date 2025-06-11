@@ -14,7 +14,7 @@ export default function Header() {
           <Navbar.Collapse className={styles.nav_collapse} id="basic-navbar-nav">
                         <Nav className="mx-auto">
                             <Nav.Link className={styles.nav_link} href="/login">Login</Nav.Link>
-                            <Nav.Link className={styles.nav_link} href="/criar">Sobre</Nav.Link>
+                            <Nav.Link className={styles.nav_link} href="#whatsapp">Cadastrar</Nav.Link>
                             <Nav.Link className={styles.nav_link} href="/">Planos</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>

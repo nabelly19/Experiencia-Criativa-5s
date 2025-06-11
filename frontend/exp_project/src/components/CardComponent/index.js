@@ -4,55 +4,36 @@ import { Button, Spinner, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import CustomModal from "../ModalComponent";
 
-export default function CardComponent({ habitId, userId }) {
-  const [habit, setHabit] = useState(null);
-  const [loading, setLoading] = useState(true);
+export default function CardComponent({ data, entity }) {
+  const [isLoading, setIsLoading] = useState(false);
 
   const [showDetail, setShowDetail] = useState(false);
   const [detailData, setDetailData] = useState(null);
 
   const [showEdit, setShowEdit] = useState(false);
   const [editData, setEditData] = useState(null);
-  const [saving, setSaving] = useState(false);
 
-  const [deleting, setDeleting] = useState(false);
   const navigate = useNavigate();
 
-  // 1️⃣ Busca inicial do hábito
-  useEffect(() => {
-    async function fetchHabit() {
-      try {
-        const res = await fetch(`/api/users/${userId}/habits/${habitId}`);
-        if (!res.ok) throw new Error('Erro ao buscar hábito');
-        const data = await res.json();
-        setHabit(data);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchHabit();
-  }, [userId, habitId]);
-
-  if (loading) {
+  if (isLoading) {
     return (
       <div className={`${styles.card} d-flex justify-content-center align-items-center`}>
         <Spinner animation="border" variant="light" />
       </div>
     );
   }
-  if (!habit) return null;
+  if (!data) return null;
 
   // 2️⃣ Detalhes
   const openDetail = async () => {
     try {
-      const res = await fetch(`/api/habits/${habit.id}`);
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/users/${data.user_id}/${entity}/${data.id}`);
       if (!res.ok) throw new Error("Erro ao buscar detalhes");
       setDetailData(await res.json());
       setShowDetail(true);
     } catch (err) {
       console.error(err);
+      window.alert(err.message);
     }
   };
   const closeDetail = () => {
@@ -62,7 +43,7 @@ export default function CardComponent({ habitId, userId }) {
 
   // 3️⃣ Edição via modal separado
   const openEdit = () => {
-    setEditData({ title: habit.title, description: habit.description, details: habit.details });
+    setEditData({ title: data.title, description: data.description, content: data.content });
     setShowEdit(true);
   };
   const closeEdit = () => {
@@ -70,50 +51,51 @@ export default function CardComponent({ habitId, userId }) {
     setEditData(null);
   };
   const saveEdit = async () => {
-    setSaving(true);
     try {
-      const res = await fetch(`/api/habits/${habit.id}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/users/${data.user_id}/${entity}/${data.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(editData),
       });
       if (!res.ok) throw new Error("Erro ao salvar");
       const updated = await res.json();
-      setHabit(updated);
       closeEdit();
       closeDetail();
+      window.alert("Atualizado com sucesso!");
+      //reload page
+      window.location.reload();
     } catch (err) {
       console.error(err);
-    } finally {
-      setSaving(false);
+      window.alert(err.message);
     }
   };
 
   // 4️⃣ Apagar
   const handleDelete = async () => {
-    if (!window.confirm("Deseja realmente apagar este hábito?")) return;
-    setDeleting(true);
+    if (!window.confirm("Deseja realmente apagar este item?")) return;
     try {
-      const res = await fetch(`/api/habits/${habit.id}`, { method: "DELETE" });
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/users/${data.user_id}/${entity}/${data.id}`, { method: "DELETE" });
       if (!res.ok) throw new Error("Erro ao deletar");
-      navigate("/habits");
+      window.alert("Deletado com sucesso!");
+      navigate("/management");
+      //reload page
+      window.location.reload();
     } catch (err) {
       console.error(err);
-    } finally {
-      setDeleting(false);
+      window.alert(err.message);
     }
   };
 
   return (
     <>
       <div className={styles.card}>
-        <h5 className={styles.title}>{habit.title}</h5>
-        <p className={styles.description}>{habit.description}</p>
+        <h5 className={styles.title}>{data.title || `#${data.id}`}</h5>
+        <p className={styles.description}>{data.description || data.content}</p>
         <div className="d-flex gap-2">
           <Button variant="info" onClick={openDetail}>VER DETALHES</Button>
           <Button variant="warning" onClick={openEdit}>EDITAR</Button>
-          <Button variant="danger" onClick={handleDelete} disabled={deleting}>
-            {deleting ? <Spinner animation="border" size="sm" /> : "APAGAR"}
+          <Button variant="danger" onClick={handleDelete} disabled={isLoading}>
+            {isLoading ? <Spinner animation="border" size="sm" /> : "APAGAR"}
           </Button>
         </div>
       </div>
@@ -123,12 +105,13 @@ export default function CardComponent({ habitId, userId }) {
         <CustomModal
           show={showDetail}
           handleClose={closeDetail}
-          title={`Detalhes: ${detailData.title}`}
+          title={`${detailData.title || `#${detailData.id}`}`}
         >
-          <p><strong>Descrição:</strong> {detailData.description}</p>
-          <p><strong>Detalhes:</strong> {detailData.details}</p>
-          <Button variant="secondary" onClick={openEdit}>
-            Editar Aqui
+          <p>{detailData.description || detailData.content}</p>
+          {/* <p>{detailData.details}</p> */}
+          {/* TODO: FAZER EDIÇÃO DE TODOS OS CAMPOS DE FORMA DINAMICA */}
+          <Button variant="primary" onClick={openEdit}>
+            Editar
           </Button>
         </CustomModal>
       )}
@@ -138,26 +121,42 @@ export default function CardComponent({ habitId, userId }) {
         <CustomModal
           show={showEdit}
           handleClose={closeEdit}
-          title="Editar Hábito"
+          title="Editar"
           onConfirm={saveEdit}
+          onCancel={closeEdit}
         >
-          <Form.Group className="mb-3">
-            <Form.Label>Título</Form.Label>
-            <Form.Control
-              value={editData.title}
-              onChange={e => setEditData(d => ({ ...d, title: e.target.value }))}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Descrição</Form.Label>
-            <Form.Control
-              as="textarea"
-              rows={2}
-              value={editData.description}
-              onChange={e => setEditData(d => ({ ...d, description: e.target.value }))}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
+          {entity !== "reminders" && (
+            <Form.Group className="mb-3">
+              <Form.Label>Título</Form.Label>
+              <Form.Control
+                value={editData.title}
+                onChange={e => setEditData(d => ({ ...d, title: e.target.value }))}
+              />
+            </Form.Group>
+          )}
+          {entity !== "reminders" && (
+            <Form.Group className="mb-3">
+              <Form.Label>Descrição</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={2}
+                value={editData.description}
+                onChange={e => setEditData(d => ({ ...d, description: e.target.value }))}
+              />
+            </Form.Group>
+          )}
+
+          {entity === "reminders" && (
+            <Form.Group className="mb-3">
+              <Form.Label>Conteúdo</Form.Label>
+              <Form.Control
+                value={editData.content}
+                onChange={e => setEditData(d => ({ ...d, content: e.target.value }))}
+              />
+            </Form.Group>
+          )}
+
+          {/* <Form.Group className="mb-3">
             <Form.Label>Detalhes</Form.Label>
             <Form.Control
               as="textarea"
@@ -165,8 +164,8 @@ export default function CardComponent({ habitId, userId }) {
               value={editData.details}
               onChange={e => setEditData(d => ({ ...d, details: e.target.value }))}
             />
-          </Form.Group>
-          {saving && <Spinner animation="border" />}
+          </Form.Group> */}
+          {isLoading && <Spinner animation="border" />}
         </CustomModal>
       )}
     </>
