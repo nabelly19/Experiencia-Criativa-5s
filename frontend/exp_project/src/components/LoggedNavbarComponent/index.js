@@ -11,46 +11,59 @@ import CustomInputComponent from "../CustomInputComponent";
 
 // styles
 import styles from "./styles.module.css";
+import useUserStore from "../../store/useUserStore";
 
 export default function LoggedHeader() {
   const [showProfile, setShowProfile] = useState(false);
-  const [user, setUser] = useState({ name: "", email: "" });
-  const [loading, setLoading] = useState(true);
+  const { user, setUser } = useUserStore();
+  const [localUser, setLocalUser] = useState(user);
 
-  // 1) Busca dados do usuário ao montar o componente
   useEffect(() => {
-    async function fetchUser() {
+    //get user
+    async function getUser() {
       try {
-        const res = await fetch("/api/me"); // endpoint que retorna { name, email, ... }
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/users/${user.id}`);
+        if (!res.ok) throw new Error("Falha ao buscar usuário");
         const data = await res.json();
-        setUser({ name: data.name, email: data.email });
+        setLocalUser(data);
       } catch (err) {
         console.error(err);
-      } finally {
-        setLoading(false);
+        window.alert(err.message);
       }
     }
-    fetchUser();
+    getUser();
   }, []);
+
+
+  
 
   // 2) Atualiza estado local ao editar campos
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setUser((u) => ({ ...u, [name]: value }));
+    setLocalUser((u) => ({ ...u, [name]: value }));
   };
 
   // 3) Envia PUT para salvar alterações
   const handleSave = async () => {
     try {
-      const res = await fetch("/api/me", {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/users/${user.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(user),
+        body: JSON.stringify({
+          name: localUser.name,
+          email: localUser.email,
+        }),
       });
-      if (!res.ok) throw new Error("Erro ao salvar");
+      if (!res.ok) throw new Error("Falha ao salvar");
       setShowProfile(false);
+      setUser({
+        ...user,
+        name: localUser.name,
+        email: localUser.email,
+      });
     } catch (err) {
       console.error(err);
+      window.alert(err.message);
     }
   };
 
@@ -61,14 +74,14 @@ export default function LoggedHeader() {
           <Navbar.Brand className={styles.navbar_brand} href="/">
             SOPRO
           </Navbar.Brand>
-          <Navbar.Toggle
+          {/* <Navbar.Toggle
             className={styles.nav_toggle}
             aria-controls="basic-navbar-nav"
-          />
-          <Navbar.Collapse
+          /> */}
+          {/* <Navbar.Collapse
             className={styles.nav_collapse}
             id="basic-navbar-nav"
-          >
+          > */}
             <Nav className="ms-auto">
               <Nav.Link className={styles.nav_link}>
                 <div
@@ -79,7 +92,7 @@ export default function LoggedHeader() {
                 </div>
               </Nav.Link>
             </Nav>
-          </Navbar.Collapse>
+          {/* </Navbar.Collapse> */}
         </Container>
       </Navbar>
 
@@ -90,9 +103,7 @@ export default function LoggedHeader() {
         title="Seu Perfil"
         onConfirm={handleSave}
       >
-        {loading ? (
-          <p>Carregando...</p>
-        ) : (
+        {localUser ? (
           <>
             <p>Altere as suas informações pessoais sempre que desejar!</p>
 
@@ -102,7 +113,7 @@ export default function LoggedHeader() {
                 type="text"
                 name="name"
                 placeholder="Seu nome"
-                value={user.name}
+                value={localUser.name}
                 onChange={handleChange}
               />
               <CustomInputComponent
@@ -110,11 +121,13 @@ export default function LoggedHeader() {
                 type="email"
                 name="email"
                 placeholder="Seu email"
-                value={user.email}
+                value={localUser.email}
                 onChange={handleChange}
               />
             </Form>
           </>
+        ) : (
+          <p>Carregando...</p>
         )}
       </CustomModal>
     </>

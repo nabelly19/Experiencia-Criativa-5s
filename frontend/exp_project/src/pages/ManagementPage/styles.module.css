@@ -2,7 +2,7 @@
     padding: 2rem;
     background-color: #000B1B;
     min-height: 100vh;
-    color: #ffffff;
+    color: #ffffff;    
   }
   
   .pageTitle {
@@ -24,3 +24,10 @@
     /* Inverte verticalmente */
   }
   
+
+  .welcomeMessage {
+    display: flex;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-family: 'Lato', sans-serif;
+  }

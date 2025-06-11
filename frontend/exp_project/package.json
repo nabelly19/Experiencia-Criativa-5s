@@ -16,10 +16,11 @@
     "react-scripts": "5.0.1",
     "routes": "^2.1.0",
     "shadcn-ui": "^0.9.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zustand": "^5.0.5"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start --watch",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

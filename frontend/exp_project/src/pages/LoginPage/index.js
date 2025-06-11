@@ -3,6 +3,7 @@ import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import styles from "./styles.module.css";
 import CustomInputComponent from "../../components/CustomInputComponent";
 import WaveBackground from "../../components/WaveComponent";
+import useUserStore from "../../store/useUserStore";
 
 export default function LoginPage() {
   const [formData, setFormData] = useState({
@@ -18,10 +19,14 @@ export default function LoginPage() {
     }));
   };
 
+  // Importando as ações da store
+  const { setUser } = useUserStore();
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault();    
+
     try {
-      const response = await fetch("https://1b89-200-192-114-19.ngrok-free.app/auth/login", {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -30,21 +35,28 @@ export default function LoginPage() {
       });
 
       if (response.ok) {
-        // após login bem-sucedido
-        console.log("Login realizado com sucesso!");
+        // Obter os dados do usuário e token da resposta
+        const data = await response.json();
+        
+        // Salvar os dados do usuário na store global
+        setUser(data);      
+
+        window.alert("Login realizado com sucesso!");
+        //encaminhar para a página de dashboard
+        window.location.href = "/management"; 
       } else {
         // erros de resposta aqui
-        console.error("Erro ao realizar login.");
+        window.alert("Esses dados não constam em nossos registros");
       }
     } catch (error) {
       // erros de rede ou outros aqui
-      console.error("Erro na requisição:", error);
+      window.alert("Erro na requisição:", error);
     }
   };
 
   return (
     <div className={styles.loginWrapper}>
-        <WaveBackground />
+      <WaveBackground />
       <Container className={styles.loginContainer}>
         <Row className="justify-content-center">
           <Col xs={12} md={6} lg={4}>

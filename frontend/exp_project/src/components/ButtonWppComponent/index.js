@@ -29,7 +29,7 @@ export default function ButtonWppComponent() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault();    
   
     // Validação simples
     if (formData.password !== formData.confirmPassword) {
@@ -38,7 +38,7 @@ export default function ButtonWppComponent() {
     }
   
     try {
-      const response = await fetch('https://1b89-200-192-114-19.ngrok-free.app/auth/register', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -60,6 +60,14 @@ export default function ButtonWppComponent() {
         password: '',
         confirmPassword: ''
       });
+
+      //abrir um nova aba para iniciar conversa no whatsapp https://wa.me/5511999999999
+      window.open(`https://wa.me/5541987075292`, '_blank');
+
+
+      setTimeout(() => {
+        window.location.href = "/management";
+      }, 1000);
     } catch (error) {
       console.error('Erro na requisição:', error);
       alert('Erro ao conectar com o servidor.');
@@ -71,7 +79,7 @@ export default function ButtonWppComponent() {
 
   return (
     <>
-      <button className={styles.buttonWpp} onClick={handleOpen}>
+      <button id="whatsapp" className={styles.buttonWpp} onClick={handleOpen}>
         <div className={styles.buttonContent}>
           <img src={wppIcon} className={styles.wppIcon} alt="Register Button" />
           <div className={styles.buttonLabel}>
@@ -86,6 +94,7 @@ export default function ButtonWppComponent() {
         handleClose={handleClose}
         title="Registre-se"
         onConfirm={handleSubmit}
+        omitFooter={true}
       >
         <Form onSubmit={handleSubmit}>
           <CustomInputComponent

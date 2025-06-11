@@ -11,6 +11,7 @@ export default function CustomModal({
   title,
   children,
   onConfirm,
+  omitFooter
 }) {
   return (
     <Modal
@@ -24,18 +25,20 @@ export default function CustomModal({
         <Modal.Title className={styles.customModalTitle}>{title}</Modal.Title>
       </Modal.Header>
       <Modal.Body className={styles.customModalBody}>{children}</Modal.Body>
-      <Modal.Footer className={styles.customModalFooter}>
-        <Button className={styles.btn} variant="primary" onClick={handleClose}>
-          Voltar
-        </Button>
-
-        {onConfirm && (
-          <Button className={styles.btn} variant="primary" onClick={onConfirm}>
-            Salvar
+      {!omitFooter && (
+        <Modal.Footer className={styles.customModalFooter}>
+          <Button className={styles.btn} variant="secondary" onClick={handleClose}>
+            Voltar
           </Button>
-        )}
 
-      </Modal.Footer>
+          {onConfirm && (
+            <Button className={styles.btn} variant="primary" onClick={onConfirm}>
+              Salvar
+            </Button>
+          )}
+
+        </Modal.Footer>
+      )}
     </Modal>
   );
 }
